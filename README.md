@@ -17,7 +17,6 @@ This repository contains a simple **agentic AI** chat application built with [Gr
 ```
 .
 ├── app.py               # Main Gradio app
-├── 4_lab4.ipynb         # Notebook with experimentation / prototype
 ├── requirements.txt     # Python dependencies
 ├── .env.example         # Template for environment variables
 └── .gitignore           # Git ignore rules
