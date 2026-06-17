@@ -1,0 +1,41 @@
+## About Amit Kumar
+
+I'm Amit Kumar, a System Software Engineer and AI enthusiast based in Bengaluru, Karnataka, India. I'm currently pursuing a Bachelor of Engineering in Computer Science at Visvesvaraya Technological University (2022–2026).
+
+## What I Do
+
+I specialize in building Agentic AI systems — autonomous AI agents and multi-agent workflows that solve real-world problems. My core expertise is in Python, with hands-on experience in frameworks like CrewAI, AutoGen, and LangGraph.
+
+## Experience
+
+**AI Engineer Intern — Bayer (Jan 2026 – Mar 2026)**
+Built and deployed multiple AI agents and multi-agent systems for real-world applications:
+- Career Digital Twin Agent to represent skills and interact with potential employers
+- SDR Agent to generate and send personalized sales emails automatically
+- Deep Research multi-agent system for extensive topic analysis
+- Stock Picker Agent to automate investment research and decision-making
+- 4-Agent Engineering Team managing, building, and testing software using Docker
+- Operator-style browser agent for real-time user workflows
+- Agent Creator system that generates and deploys new agents autonomously
+- Capstone Trading Floor with 4 autonomous agents powered by MCP servers and 40+ tools
+
+**Software Development Engineer Intern — Bayer (Oct 2025 – Jan 2026)**
+Enhanced TDMS territory intelligence by building an interactive Village–FOT mapping experience using Vue.js + Leaflet. Integrated Flask APIs for GeoJSON polygon layers and implemented dynamic summary panels for business users.
+Tech: Vue.js, Leaflet, JavaScript, Python/Flask, GeoJSON, Git/GitHub, AWS.
+
+## Skills & Certifications
+
+- **Top Skills:** AI Agents, Agentic AI, Model Context Protocol (MCP), Python, Java, OpenCV, SQL
+- **Certifications:**
+  - Oracle Cloud Infrastructure 2025 Certified Generative AI Professional
+  - Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate
+  - AI Engineer Agentic Track: The Complete Agent & MCP Course
+  - Complete A.I. & Machine Learning, Data Science Bootcamp
+  - SQL Training Certificate – Pierian Data
+
+## What I'm Looking For
+
+I'm actively seeking opportunities in AI engineering, agentic systems, and software development — internships, research collaborations, or open-source contributions. If you're building something ambitious with AI, I'd love to connect.
+
+**Email:** amitkumar123456va@gmail.com
+**LinkedIn:** linkedin.com/in/amitkumar-623593195
