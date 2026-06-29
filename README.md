@@ -1,6 +1,6 @@
 # Agentic AI Chat (Gradio)
 
-This repository contains a simple **agentic AI** chat application built with [Gradio](https://gradio.app/) and the [OpenAI Python SDK](https://github.com/openai/openai-python). It supports tools like PDF reading and push notifications via Pushover.
+This repository contains a simple **agentic AI** chat application built with [Gradio](https://gradio.app/) and the [OpenAI Python API](https://github.com/openai/openai-python). It supports tools like PDF reading and push notifications via Pushover.
 
 ## Features
 
