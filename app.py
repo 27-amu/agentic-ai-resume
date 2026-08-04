@@ -18,9 +18,21 @@ PROFILE_PDF = APP_DIR / "me" / "linkedin.pdf"
 PROFILE_SUMMARY = APP_DIR / "me" / "summary.txt"
 DEFAULT_BASE_URL = "http://localhost:11434/v1"
 DEFAULT_MODEL = "llama3.2:1b"
-MAX_TOOL_ROUNDS = 5
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
 EMAIL_PATTERN = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+
+
+def positive_env_int(name: str, default: int) -> int:
+    try:
+        value = int(os.getenv(name, str(default)))
+    except ValueError:
+        return default
+    return value if value > 0 else default
+
+
+MAX_TOOL_ROUNDS = positive_env_int("MAX_TOOL_ROUNDS", 5)
+MODEL_TIMEOUT_SECONDS = positive_env_int("MODEL_TIMEOUT_SECONDS", 60)
+PUSHOVER_TIMEOUT_SECONDS = positive_env_int("PUSHOVER_TIMEOUT_SECONDS", 10)
 
 
 def push(text: str) -> dict[str, Any]:
@@ -34,7 +46,7 @@ def push(text: str) -> dict[str, Any]:
         response = requests.post(
             PUSHOVER_URL,
             data={"token": token, "user": user, "message": text},
-            timeout=10,
+            timeout=PUSHOVER_TIMEOUT_SECONDS,
         )
         response.raise_for_status()
     except requests.RequestException as exc:
@@ -179,7 +191,7 @@ If a user wants to connect, explain that their details will be sent privately to
                     model=self.model,
                     messages=messages,
                     tools=TOOLS,
-                    timeout=60,
+                    timeout=MODEL_TIMEOUT_SECONDS,
                 )
                 choice = response.choices[0]
                 if choice.finish_reason != "tool_calls":

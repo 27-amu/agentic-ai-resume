@@ -47,6 +47,16 @@ class NotificationTests(unittest.TestCase):
         push.assert_not_called()
 
 
+class ConfigurationTests(unittest.TestCase):
+    @patch.dict(os.environ, {"TEST_LIMIT": "12"})
+    def test_positive_integer_setting(self):
+        self.assertEqual(app.positive_env_int("TEST_LIMIT", 5), 12)
+
+    @patch.dict(os.environ, {"TEST_LIMIT": "invalid"})
+    def test_invalid_integer_setting_uses_default(self):
+        self.assertEqual(app.positive_env_int("TEST_LIMIT", 5), 5)
+
+
 class ToolDispatchTests(unittest.TestCase):
     def setUp(self):
         self.me = app.Me.__new__(app.Me)
