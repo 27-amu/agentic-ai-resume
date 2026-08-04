@@ -33,6 +33,7 @@ def positive_env_int(name: str, default: int) -> int:
 MAX_TOOL_ROUNDS = positive_env_int("MAX_TOOL_ROUNDS", 5)
 MODEL_TIMEOUT_SECONDS = positive_env_int("MODEL_TIMEOUT_SECONDS", 60)
 PUSHOVER_TIMEOUT_SECONDS = positive_env_int("PUSHOVER_TIMEOUT_SECONDS", 10)
+MAX_MESSAGE_LENGTH = positive_env_int("MAX_MESSAGE_LENGTH", 4_000)
 
 
 def push(text: str) -> dict[str, Any]:
@@ -179,6 +180,11 @@ If a user wants to connect, explain that their details will be sent privately to
 """
 
     def chat(self, message: str, history: list[dict[str, Any]]) -> str:
+        if len(message) > MAX_MESSAGE_LENGTH:
+            return (
+                f"Please shorten your message to {MAX_MESSAGE_LENGTH:,} characters or fewer."
+            )
+
         messages = [
             {"role": "system", "content": self.system_prompt()},
             *history,

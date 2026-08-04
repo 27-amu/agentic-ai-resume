@@ -89,5 +89,15 @@ class ToolDispatchTests(unittest.TestCase):
         self.assertEqual(json.loads(result[0]["content"]), {"recorded": True})
 
 
+class ChatInputTests(unittest.TestCase):
+    def test_oversized_message_is_rejected_before_model_call(self):
+        me = app.Me.__new__(app.Me)
+        message = "x" * (app.MAX_MESSAGE_LENGTH + 1)
+
+        result = me.chat(message, [])
+
+        self.assertIn(f"{app.MAX_MESSAGE_LENGTH:,}", result)
+
+
 if __name__ == "__main__":
     unittest.main()
