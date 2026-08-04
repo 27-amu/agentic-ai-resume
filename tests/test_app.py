@@ -36,6 +36,16 @@ class NotificationTests(unittest.TestCase):
         self.assertEqual(result, {"sent": True})
         self.assertEqual(post.call_args.kwargs["timeout"], 10)
 
+    @patch("app.push")
+    def test_invalid_email_is_not_sent(self, push):
+        result = app.record_user_details("not-an-email")
+
+        self.assertEqual(
+            result,
+            {"recorded": False, "error": "A valid email address is required"},
+        )
+        push.assert_not_called()
+
 
 class ToolDispatchTests(unittest.TestCase):
     def setUp(self):

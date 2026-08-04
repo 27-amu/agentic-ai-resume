@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,7 @@ DEFAULT_BASE_URL = "http://localhost:11434/v1"
 DEFAULT_MODEL = "llama3.2:1b"
 MAX_TOOL_ROUNDS = 5
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
+EMAIL_PATTERN = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
 
 def push(text: str) -> dict[str, Any]:
@@ -44,6 +46,9 @@ def push(text: str) -> dict[str, Any]:
 def record_user_details(
     email: str, name: str = "Name not provided", notes: str = "Not provided"
 ) -> dict[str, Any]:
+    email = email.strip()
+    if not EMAIL_PATTERN.fullmatch(email):
+        return {"recorded": False, "error": "A valid email address is required"}
     notification = push(f"Contact request from {name}: {email}. Notes: {notes}")
     return {"recorded": notification["sent"], "notification": notification}
 
